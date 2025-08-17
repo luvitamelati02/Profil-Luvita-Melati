@@ -1,0 +1,201 @@
+:root {
+  --pink-50:#fff7fb;
+  --pink-100:#ffe9f5;
+  --pink-200:#ffd3ea;
+  --pink-300:#ffb8dc;
+  --pink-400:#ff9ecf;
+  --pink-500:#ff7fbf;
+  --ink:#5c3b4b;
+  --card: rgba(255,255,255,0.55);
+  --stroke: rgba(255,255,255,0.7);
+  --shadow: rgba(255, 105, 180, .15);
+}
+
+html, body {height:100%;}
+body {
+  margin:0;
+  font-family: "Times New Roman", Times, serif;  /* ganti jadi TNR */
+  color: var(--ink);
+  line-height:1.65;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, var(--pink-100), transparent 60%),
+    radial-gradient(1000px 500px at 110% 20%, var(--pink-200), transparent 55%),
+    linear-gradient(135deg, var(--pink-50), var(--pink-100));
+  overflow-x:hidden;
+}
+
+/* Glitter background */
+.glitter, .glitter::before, .glitter::after {
+  position:fixed; inset:0; pointer-events:none;
+}
+.glitter {mix-blend-mode: screen;}
+.glitter::before, .glitter::after {
+  content:"";
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,.85) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 30% 80%, rgba(255,255,255,.75) 0 1.2px, transparent 1.8px),
+    radial-gradient(circle at 60% 30%, rgba(255,255,255,.9) 0 1.1px, transparent 1.7px),
+    radial-gradient(circle at 80% 60%, rgba(255,255,255,.85) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.9) 0 1.2px, transparent 1.8px),
+    radial-gradient(circle at 25% 40%, rgba(255,255,255,.8) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 90% 15%, rgba(255,255,255,.8) 0 1.1px, transparent 1.7px),
+    radial-gradient(circle at 15% 90%, rgba(255,255,255,.9) 0 1.2px, transparent 1.8px);
+  background-size: 600px 600px, 700px 700px, 900px 900px, 800px 800px, 1000px 1000px, 750px 750px, 900px 900px, 950px 950px;
+  animation: twinkle 8s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,.4));
+  opacity:.7;
+}
+.glitter::after {
+  animation-duration: 12s;
+  background-size: 900px 900px, 800px 800px, 1100px 1100px, 950px 950px, 1200px 1200px, 880px 880px, 1100px 1100px, 1000px 1000px;
+  opacity:.5;
+}
+@keyframes twinkle {
+  0%{background-position: 0 0, 100px 50px, -200px -100px, 50px -80px, 0 0, 80px -40px, -60px 60px, 100px -100px;}
+  50%{background-position: 300px 200px, 0 150px, 100px 100px, -50px 0, 200px 150px, -100px 100px, 120px -120px, -100px 80px;}
+  100%{background-position: 0 0, 100px 50px, -200px -100px, 50px -80px, 0 0, 80px -40px, -60px 60px, 100px -100px;}
+}
+
+/* Header */
+header {
+  position:sticky; top:0; z-index:20;
+  backdrop-filter: saturate(180%) blur(10px);
+  background: linear-gradient(to right, rgba(255,255,255,.75), rgba(255,255,255,.55));
+  border-bottom:1px solid var(--stroke);
+}
+.wrap {max-width:1100px; margin-inline:auto; padding:14px 20px;}
+nav {display:flex; gap:16px; align-items:center; justify-content:space-between;}
+.brand {display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.5px;}
+.brand .logo {
+  width:36px; height:36px; border-radius:999px;
+  background: radial-gradient(circle at 30% 30%, #fff 0 35%, var(--pink-300) 36% 70%, var(--pink-400) 71% 100%);
+  box-shadow: 0 8px 24px var(--shadow);
+  border:1px solid var(--stroke);
+}
+.menu {display:flex; flex-wrap:wrap; gap:10px;}
+.menu a {
+  color:var(--ink); text-decoration:none; font-weight:600;
+  padding:8px 12px; border-radius:999px; border:1px solid transparent;
+}
+.menu a:hover {
+  border-color:var(--pink-300); background:var(--pink-100);
+}
+
+/* Hero */
+.hero {padding:72px 20px 40px; text-align:center;}
+.title {font-size: clamp(28px, 5vw, 44px); margin:0; font-weight:900;}
+.subtitle {margin:10px auto 22px; max-width:700px; font-size:clamp(14px, 2.8vw, 18px); opacity:.85;}
+.pill {
+  display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px;
+  background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
+  border:1px solid var(--stroke); box-shadow:0 10px 30px var(--shadow);
+  font-weight:700; letter-spacing:.3px; text-transform:uppercase; font-size:12px;
+}
+
+/* Sections */
+section {scroll-margin-top:90px;}
+.grid {display:grid; gap:18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));}
+.card {
+  background: var(--card);
+  border:1px solid var(--stroke);
+  border-radius:20px;
+  padding:18px;
+  box-shadow: 0 15px 35px var(--shadow);
+  backdrop-filter: blur(8px) saturate(120%);
+}
+.card h3 {margin:0 0 8px; font-size:20px;}
+.tag {
+  display:inline-block; padding:6px 10px; border-radius:999px;
+  background:var(--pink-200); border:1px solid var(--pink-300);
+  font-weight:600; font-size:12px; margin:4px 6px 0 0;
+}
+.list {padding-left:18px; margin:8px 0 0;}
+
+/* Contact */
+.contact {display:flex; flex-wrap:wrap; gap:12px;}
+.btn {
+  display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:16px;
+  background: linear-gradient(180deg, #fff, #ffeef7);
+  border:1px solid var(--stroke); text-decoration:none; color:var(--ink); font-weight:700;
+  box-shadow: 0 10px 24px var(--shadow);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover {transform: translateY(-2px); box-shadow: 0 14px 30px var(--shadow);}
+
+/* Footer */
+footer {padding:40px 20px; text-align:center; opacity:.8; font-size:14px;}
+
+/* Hujan glitter jatuh */
+@keyframes fall {
+  0% {
+    transform: translateY(-10%) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.sparkle {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.sparkle span {
+  position: absolute;
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ffb3d9;
+  animation: fall linear infinite;
+}
+
+/* Posisi & timing bintang */
+.sparkle span:nth-child(1) { left: 10%; animation-duration: 6s; animation-delay: 0s; }
+.sparkle span:nth-child(2) { left: 20%; animation-duration: 8s; animation-delay: 1s; }
+.sparkle span:nth-child(3) { left: 30%; animation-duration: 5s; animation-delay: 2s; }
+.sparkle span:nth-child(4) { left: 40%; animation-duration: 7s; animation-delay: 3s; }
+.sparkle span:nth-child(5) { left: 50%; animation-duration: 6s; animation-delay: 4s; }
+.sparkle span:nth-child(6) { left: 60%; animation-duration: 9s; animation-delay: 2s; }
+.sparkle span:nth-child(7) { left: 70%; animation-duration: 5s; animation-delay: 1s; }
+.sparkle span:nth-child(8) { left: 80%; animation-duration: 7s; animation-delay: 3s; }
+.sparkle span:nth-child(9) { left: 90%; animation-duration: 6s; animation-delay: 2s; }
+
+/* Responsif buat HP */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 22px;
+  }
+
+  .card {
+    padding: 15px;
+    margin: 10px 0;
+  }
+
+  .tag {
+    display: inline-block;
+    margin: 5px 3px;
+    font-size: 12px;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
