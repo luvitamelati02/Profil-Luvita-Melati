@@ -273,5 +273,50 @@ footer {padding:40px 20px; text-align:center; opacity:.8; font-size:14px;}
   z-index: 9999;
   pointer-events: none;
 }
+/* CSS */
+.heart {
+  position: relative;
+  width: 100px;
+  height: 90px;
+  background: #f8c8d8; /* pale pink */
+  transform: rotate(-45deg);
+  margin: 50px auto;
+  animation: sparkle 2s infinite linear;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 90px;
+  background: #f8c8d8;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  left: 50px;
+  top: 0;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    box-shadow: 
+      0 0 2px #fff,
+      10px 10px 5px #ffe4e6,
+      -10px -10px 5px #ffe4e6;
+  }
+  50% {
+    box-shadow: 
+      0 0 5px #fff,
+      10px 10px 8px #ffd1dc,
+      -10px -10px 8px #ffd1dc;
+  }
+}
 
 
